@@ -1,7 +1,7 @@
 // Required depedencies
 var express = require('express');
 var router = express.Router();
-var burger = require('../models/burger.js');
+var burger = require('../models/taco.js');
 
 // Create routes
 
@@ -14,7 +14,7 @@ router.get('/', function(req, res) {
 // selectAll
 router.get('/index', function(req, res) {
 	burger.selectAll(function(data) {
-		var hbsObject = {burgers: data};
+		var hbsObject = {tacos: data};
 		res.render('index', hbsObject);
 	});
 });
@@ -22,8 +22,8 @@ router.get('/index', function(req, res) {
 
 
 // insertOne
-router.post('/burgers/insertOne', function(req, res) {
-	burger.insertOne(['burger_name', 'devoured'], [req.body.name, false], function() {
+router.post('/tacos/insertOne', function(req, res) {
+	burger.insertOne(['taco_name', 'devoured'], [req.body.name, false], function() {
 		res.redirect('/index');
 	});
 });
@@ -31,7 +31,7 @@ router.post('/burgers/insertOne', function(req, res) {
 
 
 // updateOne
-router.put('/burgers/updateOne/:id', function(req, res) {
+router.put('/tacos/updateOne/:id', function(req, res) {
 	var condition = 'id = ' + req.params.id;
 	console.log('condition', condition);
 
