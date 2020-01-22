@@ -7,7 +7,7 @@ var PORT = process.env.PORT || 3000;
 
 // Express app.
 var app = express();
-app.use(express.static(__dirname + '/public'));
+app.use(express.static('public'));
 
 // Bodyparsers 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -26,8 +26,8 @@ app.set("view engine", "handlebars");
 
 
 // Import routes
-var routes = require('./controllers/burgers_controller.js');
-app.use('/', routes);
+var routes = require('./controllers/burgers_controllers.js');
+app.use(routes);
 
 // Initiate listener
 app.listen(PORT, function() {
