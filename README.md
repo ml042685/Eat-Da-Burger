@@ -4,8 +4,7 @@ https://eatdatacoplease.herokuapp.com/
 
 Homework Week 15 - Eat-da-tacos
 
-## Author: 
-Marcos Luna
+## Author: #### Marcos Luna
 
 
 ## **Description:**
