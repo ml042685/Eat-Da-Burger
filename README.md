@@ -1,9 +1,10 @@
+## Author: Marcos Luna
+
 https://eatdatacoplease.herokuapp.com/
 
 # Eat-Da-Tacos
 
 Homework Week 15 - Eat-da-tacos
-
 
 
 ## **Description:**
@@ -17,4 +18,3 @@ Homework Week 15 - Eat-da-tacos
 
 
 This application demonstrates a simple full stack application featuring the use of Node, Express server, MySQL and HTML templating using Handlebars.
-
