@@ -9,7 +9,7 @@ var Taco = sequelize.define("Taco", {
 		autoIncrement: true,
 		allowNull: false
 	  },
-	  burger_name: {
+	  taco_name: {
 		type: DataTypes.STRING,
 		allowNull: false,
 		validate: {
