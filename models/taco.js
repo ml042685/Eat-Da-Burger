@@ -2,7 +2,7 @@
 module.exports = function(sequelize, DataTypes) {
 	
 // create taco
-var Burger = sequelize.define("Burger", {
+var Taco = sequelize.define("Taco", {
 	id: {
 		type: DataTypes.INTEGER,
 		primaryKey: true,
@@ -22,5 +22,5 @@ var Burger = sequelize.define("Burger", {
 		defaultValue: false
 	  }
 	});
-	return Burger;
+	return Taco;
   };
