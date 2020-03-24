@@ -1,20 +1,178 @@
-## Author: Marcos Luna
+#Eat-Daa-Taco
 
-https://eatdatacoplease.herokuapp.com/
+### Overview
 
-# Eat-Da-Tacos
+In this assignment, you'll create a burger logger with MySQL, Node, Express, Handlebars and a homemade ORM (yum!). Be sure to follow the MVC design pattern; use Node and MySQL to query and route data in your app, and Handlebars to generate your HTML.
 
-Homework Week 15 - Eat-da-tacos
+### Read This
+
+When trying to connect remotely to your Heroku database on an open network such as a coffee shop, library, or even your University WiFi, it will be blocked. If you are experiencing a Heroku connection error, this could be why.
+
+### Important
+
+* **This assignment must be deployed.** Be sure to utilize the [MYSQL Heroku Deployment Guide](../../03-Supplemental/MySQLHerokuDeploymentProcess.pdf) in order to deploy your assignment.
+
+### Before You Begin
+
+* Eat-Da-Taco! is a restaurant app that lets users input the names of burgers they'd like to eat.
+
+* Whenever a user submits a burger's name, your app will display the burger on the left side of the page -- waiting to be devoured.
+
+* Each burger in the waiting area also has a `Devour it!` button. When the user clicks it, the burger will move to the right side of the page.
+
+* Your app will store every burger in a database, whether devoured or not.
 
 
-## **Description:**
+## Instructions
 
-* Eat-Da-Tacos! is a restaurant app that lets users input the names of tacoss they'd like to eat.
+#### App Setup
 
-* Whenever a user submits a tacos's name, your app will display the burger on the left side of the page -- waiting to be devoured.
+1. Create a GitHub repo called `taco` and clone it to your computer.
 
-* Each taco in the waiting area also has a Devour it! button. When the user clicks it, the burger will move to the right side of the page.
+2. Make a package.json file by running `npm init` from the command line.
 
+3. Install the Express npm package: `npm install express`.
 
+4. Create a server.js file.
 
-This application demonstrates a simple full stack application featuring the use of Node, Express server, MySQL and HTML templating using Handlebars.
+5. Install the Handlebars npm package: `npm install express-handlebars`.
+
+6. Install MySQL npm package: `npm install mysql`.
+
+7. Require the following npm packages inside of the server.js file:
+   * express
+
+#### DB Setup
+
+1. Inside your `taco` directory, create a folder named `db`.
+
+2. In the `db` folder, create a file named `schema.sql`. Write SQL queries this file that do the following:
+
+   * Create the `tacos_db`.
+   * Switch to or use the `tacos_db`.
+   * Create a `tacos` table with these fields:
+     * **id**: an auto incrementing int that serves as the primary key.
+     * **burger_name**: a string.
+     * **devoured**: a boolean.
+
+3. Still in the `db` folder, create a `seeds.sql` file. In this file, write insert queries to populate the `burgers` table with at least three entries.
+
+4. Run the `schema.sql` and `seeds.sql` files into the mysql server from the command line
+
+5. Now you're going to run these SQL files.
+
+   * Make sure you're in the `db` folder of your app.
+
+   * Start MySQL command line tool and login: `mysql -u root -p`.
+
+   * With the `mysql>` command line tool running, enter the command `source schema.sql`. This will run your schema file and all of the queries in it -- in other words, you'll be creating your database.
+
+   * Now insert the entries you defined in `seeds.sql` by running the file: `source seeds.sql`.
+
+   * Close out of the MySQL command line tool: `exit`.
+
+#### Config Setup
+
+1. Inside your `taco` directory, create a folder named `config`.
+
+2. Create a `connection.js` file inside `config` directory.
+
+   * Inside the `connection.js` file, setup the code to connect Node to MySQL.
+
+   * Export the connection.
+
+3. Create an `orm.js` file inside `config` directory.
+
+   * Import (require) `connection.js` into `orm.js`
+
+   * In the `orm.js` file, create the methods that will execute the necessary MySQL commands in the controllers. These are the methods you will need to use in order to retrieve and store data in your database.
+
+     * `selectAll()`
+     * `insertOne()`
+     * `updateOne()`
+
+   * Export the ORM object in `module.exports`.
+
+#### Model setup
+
+* Inside your `taco` directory, create a folder named `models`.
+
+  * In `models`, make a `taco.js` file.
+
+    * Inside `taco.js`, import `orm.js` into `taco.js`
+
+    * Also inside `taco.js`, create the code that will call the ORM functions using burger specific input for the ORM.
+
+    * Export at the end of the `taco.js` file.
+
+#### Controller setup
+
+1. Inside your `taco` directory, create a folder named `controllers`.
+
+2. In `controllers`, create the `tacos_controller.js` file.
+
+3. Inside the `tacos_controller.js` file, import the following:
+
+   * Express
+   * `taco.js`
+
+4. Create the `router` for the app, and export the `router` at the end of your file.
+
+#### View setup
+
+1. Inside your `taco` directory, create a folder named `views`.
+
+   * Create the `index.handlebars` file inside `views` directory.
+
+   * Create the `layouts` directory inside `views` directory.
+
+     * Create the `main.handlebars` file inside `layouts` directory.
+
+     * Setup the `main.handlebars` file so it's able to be used by Handlebars.
+
+     * Setup the `index.handlebars` to have the template that Handlebars can render onto.
+
+     * Create a button in `index.handlebars` that will submit the user input into the database.
+
+#### Directory structure
+
+All the recommended files and directories from the steps above should look like the following structure:
+
+```
+.
+├── config
+│   ├── connection.js
+│   └── orm.js
+│ 
+├── controllers
+│   └── tacos_controller.js
+│
+├── db
+│   ├── schema.sql
+│   └── seeds.sql
+│
+├── models
+│   └── taco.js
+│ 
+├── node_modules
+│ 
+├── package.json
+│
+├── public
+│   └── assets
+│       ├── css
+│       │   └── taco_style.css
+│       └── img
+│           └── taco.png
+│   
+│
+├── server.js
+│
+└── views
+    ├── index.handlebars
+    └── layouts
+        └── main.handlebars
+        
+        
+# Click the link for Eat-Da-Taco 
+https://eatdatacoplease.herokuapp.com/index
