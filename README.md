@@ -166,6 +166,12 @@ All the recommended files and directories from the steps above should look like 
     └── layouts
         └── main.handlebars
         
+### Technologies
+* Node.js
+* Express
+* MySQL
+* Handlebars
+* Materialize
         
 # Click the link for Eat-Da-Taco 
 
